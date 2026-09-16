@@ -1,0 +1,6 @@
+{
+  "name": "Clé d'Ex 225",
+  "description": "Application de consultation, sondage et sélection d'inspirations pour la Clé d'Ex de la Clun'ss 225.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

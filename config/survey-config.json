@@ -1,0 +1,320 @@
+{
+  "project": {
+    "title": "Questionnaire de Consultation : Projet Clé d'Ex",
+    "subtitle": "Idéation, Consultation & Sélection d'Inspirations",
+    "promo": "Cl225",
+    "targetAudience": 163,
+    "description": "La clé d'Ex est l'œuvre collective emblématique de notre promotion. Ce questionnaire préliminaire, la sélection d'inspirations et les questions secondaires permettent de recueillir la vision et les envies de chacun.",
+    "swipeBatchSize": 30
+  },
+  "swipeBatchSize": 30,
+  "questions": [
+    {
+      "id": "pre_connaissance",
+      "title": "1. Comment évalues-tu ton niveau de connaissance actuel sur les clés d'Ex ?",
+      "subtitle": "Questionnaire préliminaire",
+      "type": "single_choice",
+      "required": true,
+      "phase": "initial",
+      "options": [
+        {
+          "value": "jamais_entendu_parler",
+          "label": "Jamais entendu parler"
+        },
+        {
+          "value": "vois_rapidement",
+          "label": "Je vois rapidement ce que c'est"
+        },
+        {
+          "value": "deja_vu_quelques_unes",
+          "label": "J'en ai déjà vu quelques-unes"
+        },
+        {
+          "value": "comprends_parfaitement",
+          "label": "Je comprends le symbole et le processus de fabrication"
+        }
+      ]
+    },
+    {
+      "id": "pre_representation",
+      "title": "2. Que représente la clé d'Ex pour toi, sur le plan symbolique ?",
+      "subtitle": "Réponse libre",
+      "type": "text",
+      "required": false,
+      "phase": "initial",
+      "placeholder": "Partage ce que la clé d'Ex représente pour toi, sur le plan symbolique..."
+    },
+    {
+      "id": "pre_importance",
+      "title": "3. À quel moment juges-tu important que notre prom'ss ait fini sa clé d'Ex ?",
+      "subtitle": "Questionnaire préliminaire",
+      "type": "single_choice",
+      "required": true,
+      "phase": "initial",
+      "options": [
+        {
+          "value": "pas_une_priorite",
+          "label": "Ce n'est pas une priorité pour moi"
+        },
+        {
+          "value": "prete_retour_25ans",
+          "label": "L'important est qu'elle soit prête pour notre retour dans 25 ans"
+        },
+        {
+          "value": "finie_d_ici_1_a_2_ans",
+          "label": "Il faudrait qu'elle soit finie d'ici quelques années"
+        },
+        {
+          "value": "absolument_pour_ex_0",
+          "label": "Il faut absolument l'avoir pour la fin de la vie a l'ec'ss (Ex = 0)"
+        }
+      ]
+    },
+    {
+      "id": "pre_representation_promss",
+      "title": "4. La clé d'Ex doit être le miroir de notre promotion. Quels éléments devraient y figurer ?",
+      "subtitle": "Réponse libre",
+      "type": "text",
+      "required": false,
+      "phase": "initial",
+      "placeholder": "Éléments de notre histoire, de nos anecdotes ou de notre identité à y faire figurer..."
+    },
+    {
+      "id": "post_interet",
+      "title": "1. Maintenant que tu as vu plusieurs exemples de clés, quel est ton niveau d'intérêt pour le projet de création de notre clé ?",
+      "subtitle": "Questions secondaires",
+      "type": "single_choice",
+      "required": true,
+      "phase": "post_swipe",
+      "options": [
+        {
+          "value": "toujours_peu_interesse",
+          "label": "Toujours peu intéressé"
+        },
+        {
+          "value": "curieux_voir_propositions",
+          "label": "Curieux de voir les projets qui seront proposés"
+        },
+        {
+          "value": "envie_investir_activement",
+          "label": "J'ai envie de m'investir activement dans sa conception ou sa fabrication"
+        }
+      ]
+    },
+    {
+      "id": "post_elements_vus",
+      "title": "2. Parmi les clés d'Ex présentées, quels aspects t'ont le plus séduit ?",
+      "subtitle": "Sélectionne les aspects qui t'ont le plus séduit (choix multiple)",
+      "type": "multiple_choice",
+      "maxSelect": 5,
+      "required": true,
+      "phase": "post_swipe",
+      "options": [
+        {
+          "value": "proportions_design_classiques",
+          "label": "Les proportions et le design des clés classiques"
+        },
+        {
+          "value": "concepts_atypiques_modernes",
+          "label": "Les concepts atypiques ou modernes"
+        },
+        {
+          "value": "types_materiaux_utilises",
+          "label": "Les types de matériaux utilisés (bois, métal, composite)"
+        },
+        {
+          "value": "integration_fonctionnalites",
+          "label": "L'intégration de fonctionnalités (éclairage, modularité)"
+        },
+        {
+          "value": "autres",
+          "label": "Autres"
+        }
+      ]
+    },
+    {
+      "id": "post_taille_signification",
+      "title": "3. La taille de la clé est historiquement symbolique. En équilibrant l'esthétique et l'aspect pratique (stockage, transport), quelle dimension préfères-tu ?",
+      "subtitle": "Réponses multiples possibles",
+      "type": "multiple_choice",
+      "maxSelect": 5,
+      "required": true,
+      "phase": "post_swipe",
+      "options": [
+        {
+          "value": "taille_pompss",
+          "label": "Taille de la Pomp'ss"
+        },
+        {
+          "value": "taille_moyenne_promss",
+          "label": "Taille moyenne de la promotion"
+        },
+        {
+          "value": "milieu_knass_pompss",
+          "label": "Milieu entre le Kna'ss et le Pomp's"
+        },
+        {
+          "value": "taille_knass",
+          "label": "Taille du Kna'ss"
+        },
+        {
+          "value": "hauteur_225cm",
+          "label": "225 cm de haut"
+        },
+        {
+          "value": "autres",
+          "label": "Autres"
+        }
+      ]
+    },
+    {
+      "id": "post_materiaux",
+      "title": "4. Sur le plan des matériaux et de la direction technique, vers quelle esthétique souhaites-tu que l'on s'oriente ?",
+      "subtitle": "Réponses multiples possibles",
+      "type": "multiple_choice",
+      "maxSelect": 4,
+      "required": true,
+      "phase": "post_swipe",
+      "options": [
+        {
+          "value": "traditionnelle_noble",
+          "label": "Traditionnelle noble (ex. entièrement en bois sculpté ou usiné)"
+        },
+        {
+          "value": "industrielle",
+          "label": "Industrielle (acier, aluminium, métaux forgés ou polis)"
+        },
+        {
+          "value": "combinaison_bimateriau",
+          "label": "Combinaison bimatériau (ex. bois et métal, verre et métal)"
+        },
+        {
+          "value": "contemporaine_composite",
+          "label": "Contemporaine ou composite (résine, fibre, etc.)"
+        }
+      ]
+    },
+    {
+      "id": "post_innovation",
+      "title": "5. Souhaites-tu intégrer des touches d'innovation ou de modernité technologique dans la conception ?",
+      "subtitle": "Réponses multiples possibles",
+      "type": "multiple_choice",
+      "maxSelect": 4,
+      "required": true,
+      "phase": "post_swipe",
+      "options": [
+        {
+          "value": "eclairage_retro_integre",
+          "label": "Dispositif d'éclairage ou de rétroéclairage intégré"
+        },
+        {
+          "value": "mecanisme_articule_mobile",
+          "label": "Mécanisme articulé ou éléments mécaniques mobiles"
+        },
+        {
+          "value": "composants_interactifs_numeriques",
+          "label": "Composants interactifs (cloche des 222, épée des 214)"
+        },
+        {
+          "value": "artisanale_traditionnelle_100",
+          "label": "Rester sur une réalisation 100 % artisanale et traditionnelle"
+        }
+      ]
+    },
+    {
+      "id": "post_originalite",
+      "title": "6. Si nous devions ajouter une touche d'originalité unique à notre clé par rapport à toutes celles que tu as vues (secret caché, modularité, fonctionnalité), quelle serait ton idée ?",
+      "subtitle": "Réponse libre",
+      "type": "text",
+      "required": false,
+      "phase": "post_swipe",
+      "placeholder": "Partage ton idée d'originalité unique (secret caché, modularité, fonctionnalité...)"
+    },
+    {
+      "id": "post_boite_a_idees",
+      "title": "7. Boîte à idées générale",
+      "subtitle": "Réponse libre",
+      "type": "text",
+      "required": false,
+      "phase": "post_swipe",
+      "placeholder": "Idées, remarques, suggestions pour la réalisation collective de notre clé d'Ex..."
+    }
+  ],
+  "photos": [
+    {
+      "id": "inspi_01",
+      "title": "Clé Cluny 198",
+      "category": "Cluny",
+      "imageUrl": "https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=1000&q=80",
+      "fallbackGradient": "from-amber-700 via-amber-600 to-yellow-500",
+      "description": "",
+      "tags": []
+    },
+    {
+      "id": "inspi_02",
+      "title": "Clé Châlons 202",
+      "category": "Châlons",
+      "imageUrl": "https://images.unsplash.com/photo-1589829545856-d10d557cf95f?auto=format&fit=crop&w=1000&q=80",
+      "fallbackGradient": "from-stone-800 via-zinc-700 to-amber-800",
+      "description": "",
+      "tags": []
+    },
+    {
+      "id": "inspi_03",
+      "title": "Clé Aix 204",
+      "category": "Aix",
+      "imageUrl": "https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=1000&q=80",
+      "fallbackGradient": "from-zinc-900 via-neutral-800 to-stone-700",
+      "description": "",
+      "tags": []
+    },
+    {
+      "id": "inspi_04",
+      "title": "Clé Angers 210",
+      "category": "Angers",
+      "imageUrl": "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&w=1000&q=80",
+      "fallbackGradient": "from-amber-950 via-yellow-900 to-amber-700",
+      "description": "",
+      "tags": []
+    },
+    {
+      "id": "inspi_05",
+      "title": "Clé Lille 215",
+      "category": "Lille",
+      "imageUrl": "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1000&q=80",
+      "fallbackGradient": "from-slate-800 via-cyan-900 to-slate-700",
+      "description": "",
+      "tags": []
+    },
+    {
+      "id": "inspi_06",
+      "title": "Clé Bordeaux 218",
+      "category": "Bordeaux",
+      "imageUrl": "https://images.unsplash.com/photo-1513519245088-0e12902e5a38?auto=format&fit=crop&w=1000&q=80",
+      "fallbackGradient": "from-amber-900 via-stone-800 to-yellow-800",
+      "description": "",
+      "tags": []
+    },
+    {
+      "id": "inspi_07",
+      "title": "Clé Metz 221",
+      "category": "Metz",
+      "imageUrl": "https://images.unsplash.com/photo-1537462715879-360eeb61a0ad?auto=format&fit=crop&w=1000&q=80",
+      "fallbackGradient": "from-neutral-900 via-amber-900 to-stone-800",
+      "description": "",
+      "tags": []
+    },
+    {
+      "id": "inspi_08",
+      "title": "Clé Cluny 223",
+      "category": "Cluny",
+      "imageUrl": "https://images.unsplash.com/photo-1581092335397-9583fe92d232?auto=format&fit=crop&w=1000&q=80",
+      "fallbackGradient": "from-zinc-800 via-neutral-700 to-amber-700",
+      "description": "",
+      "tags": []
+    }
+  ],
+  "settings": {
+    "swipeBatchSize": 30
+  }
+}
