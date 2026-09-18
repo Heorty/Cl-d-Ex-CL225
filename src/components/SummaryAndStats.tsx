@@ -21,7 +21,6 @@ import {
   KeyRound,
   Layers,
   ArrowRight,
-  Settings,
 } from 'lucide-react';
 
 interface SummaryAndStatsProps {
@@ -33,7 +32,6 @@ interface SummaryAndStatsProps {
   stats: GlobalStats | null;
   onEditAnswers: (step?: 'survey' | 'swipe' | 'post_swipe_survey') => void;
   onRefreshStats: () => void;
-  onUpdateBatchSize?: (newSize: number) => Promise<void>;
   lastSavedTime?: string | null;
 }
 
@@ -46,39 +44,11 @@ export const SummaryAndStats: React.FC<SummaryAndStatsProps> = ({
   stats,
   onEditAnswers,
   onRefreshStats,
-  onUpdateBatchSize,
   lastSavedTime,
 }) => {
   const [showPersonalDetails, setShowPersonalDetails] = useState(false);
   const [photoFilter, setPhotoFilter] = useState<'all' | 'superlike' | 'like'>('all');
   const [isRefreshing, setIsRefreshing] = useState(false);
-
-  const currentBatchSize = config.swipeBatchSize ?? config.project?.swipeBatchSize ?? 30;
-  const [editingBatchSize, setEditingBatchSize] = useState<number>(currentBatchSize);
-  const [isSavingConfig, setIsSavingConfig] = useState(false);
-  const [configSaveSuccess, setConfigSaveSuccess] = useState(false);
-  const [isConfigOpen, setIsConfigOpen] = useState(false);
-
-  const handleSaveBatchSize = async (sizeToSave: number) => {
-    setIsSavingConfig(true);
-    try {
-      if (onUpdateBatchSize) {
-        await onUpdateBatchSize(sizeToSave);
-      } else {
-        await fetch('/api/config', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ swipeBatchSize: sizeToSave }),
-        });
-      }
-      setConfigSaveSuccess(true);
-      setTimeout(() => setConfigSaveSuccess(false), 3000);
-    } catch (e) {
-      console.error(e);
-    } finally {
-      setIsSavingConfig(false);
-    }
-  };
 
   const target = config.project.targetAudience || 160;
   const totalResponses = stats?.totalResponses || 1;
@@ -179,7 +149,7 @@ export const SummaryAndStats: React.FC<SummaryAndStatsProps> = ({
   return (
     <div className="w-full max-w-5xl mx-auto py-5 px-3 sm:px-6 space-y-6">
       {/* 1. Executive Status & Confirmation Header */}
-      <div className="bg-stone-900/95 border border-amber-500/30 rounded-2xl p-4 sm:p-5 shadow-xl relative overflow-hidden backdrop-blur-md">
+      <div className="bg-stone-900/60 border border-amber-500/35 rounded-2xl p-4 sm:p-5 shadow-xl relative overflow-hidden backdrop-blur-md">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
           <div className="flex items-center gap-3">
             <div className="w-10 h-10 rounded-xl bg-emerald-500/20 border border-emerald-500/40 text-emerald-400 flex items-center justify-center shrink-0">
@@ -225,7 +195,7 @@ export const SummaryAndStats: React.FC<SummaryAndStatsProps> = ({
       </div>
 
       {/* 2. Collective Promo Participation Barometer */}
-      <div className="bg-stone-900 border border-stone-800 rounded-2xl p-5 sm:p-6 shadow-xl">
+      <div className="bg-stone-900/50 backdrop-blur-md border border-stone-800/80 rounded-2xl p-5 sm:p-6 shadow-xl">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-4">
           <div className="flex items-center gap-3">
             <div className="p-2.5 rounded-xl bg-amber-500/10 text-amber-400 border border-amber-500/20">
@@ -241,7 +211,7 @@ export const SummaryAndStats: React.FC<SummaryAndStatsProps> = ({
             </div>
           </div>
 
-          <div className="flex items-center gap-4 bg-stone-950 px-4 py-2 rounded-xl border border-stone-800/80">
+          <div className="flex items-center gap-4 bg-stone-950/60 backdrop-blur-sm px-4 py-2 rounded-xl border border-stone-800/80">
             <div>
               <p className="text-[10px] uppercase font-mono tracking-wider text-stone-500">
                 Gadzarts votants
@@ -303,7 +273,7 @@ export const SummaryAndStats: React.FC<SummaryAndStatsProps> = ({
       </div>
 
       {/* 3. PODIUM & PALMARÈS DES INSPIRATIONS DE LA PROMO */}
-      <div className="bg-stone-900 border border-stone-800 rounded-2xl p-5 sm:p-6 shadow-xl space-y-6">
+      <div className="bg-stone-900/50 backdrop-blur-md border border-stone-800/80 rounded-2xl p-5 sm:p-6 shadow-xl space-y-6">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
           <div className="flex items-center gap-3">
             <div className="p-2.5 rounded-xl bg-amber-500/10 text-amber-400 border border-amber-500/20">
@@ -585,7 +555,7 @@ export const SummaryAndStats: React.FC<SummaryAndStatsProps> = ({
       </div>
 
       {/* 4. LES GRANDES DÉCISIONS COLLECTIVES DE LA PROMOTION */}
-      <div className="bg-stone-900 border border-stone-800 rounded-2xl p-5 sm:p-6 shadow-xl space-y-6">
+      <div className="bg-stone-900/50 backdrop-blur-md border border-stone-800/80 rounded-2xl p-5 sm:p-6 shadow-xl space-y-6">
         <div className="flex items-center gap-3">
           <div className="p-2.5 rounded-xl bg-amber-500/10 text-amber-400 border border-amber-500/20">
             <TrendingUp className="w-6 h-6" />
@@ -630,7 +600,7 @@ export const SummaryAndStats: React.FC<SummaryAndStatsProps> = ({
             return (
               <div
                 key={tq.id}
-                className="bg-stone-950/80 border border-stone-800/90 rounded-xl p-4 flex flex-col justify-between"
+                className="bg-stone-950/50 backdrop-blur-sm border border-stone-800/80 rounded-xl p-4 flex flex-col justify-between"
               >
                 <div>
                   <div className="flex items-start justify-between gap-2 mb-3">
@@ -691,7 +661,7 @@ export const SummaryAndStats: React.FC<SummaryAndStatsProps> = ({
 
       {/* 5. MUR DES IDÉES & SYMBOLES SUGGÉRÉS PAR LA PROMOTION */}
       {stats?.textResponses && (
-        <div className="bg-stone-900 border border-stone-800 rounded-2xl p-5 sm:p-6 shadow-xl space-y-4">
+        <div className="bg-stone-900/50 backdrop-blur-md border border-stone-800/80 rounded-2xl p-5 sm:p-6 shadow-xl space-y-4">
           <div className="flex items-center gap-3">
             <div className="p-2.5 rounded-xl bg-amber-500/10 text-amber-400 border border-amber-500/20">
               <MessageSquare className="w-6 h-6" />
@@ -778,7 +748,7 @@ export const SummaryAndStats: React.FC<SummaryAndStatsProps> = ({
       )}
 
       {/* 6. VOLET DÉPLIABLE : MES RÉPONSES PERSONNELLES */}
-      <div className="bg-stone-900 border border-stone-800 rounded-2xl p-5 shadow-lg">
+      <div className="bg-stone-900/50 backdrop-blur-md border border-stone-800/80 rounded-2xl p-5 shadow-lg">
         <button
           type="button"
           onClick={() => setShowPersonalDetails(!showPersonalDetails)}
@@ -936,89 +906,8 @@ export const SummaryAndStats: React.FC<SummaryAndStatsProps> = ({
         )}
       </div>
 
-      {/* 7. Configuration de la consultation & sélection d'inspirations */}
-      <div className="p-4 sm:p-5 rounded-2xl bg-stone-900 border border-stone-800 shadow-xl">
-        <div
-          className="flex items-center justify-between cursor-pointer select-none"
-          onClick={() => setIsConfigOpen(!isConfigOpen)}
-        >
-          <div className="flex items-center gap-2 text-stone-200">
-            <Settings className="w-4 h-4 text-amber-400 shrink-0" />
-            <h3 className="text-sm font-bold font-serif">Paramètres de la consultation (Configuration)</h3>
-          </div>
-          <div className="flex items-center gap-2">
-            <span className="text-xs font-mono text-amber-400 bg-amber-500/10 border border-amber-500/30 px-2.5 py-0.5 rounded-full">
-              {currentBatchSize} clés initiales
-            </span>
-            {isConfigOpen ? (
-              <ChevronUp className="w-4 h-4 text-stone-400" />
-            ) : (
-              <ChevronDown className="w-4 h-4 text-stone-400" />
-            )}
-          </div>
-        </div>
-
-        {isConfigOpen && (
-          <div className="mt-4 pt-4 border-t border-stone-800 text-xs text-stone-300 space-y-3">
-            <p className="text-stone-400 leading-relaxed">
-              Définit le nombre de clés d'Ex présentées au répondant avant de lui proposer de passer à l'Étape 3 ou de continuer à explorer le reste du catalogue (+{Math.max(0, config.photos.length - currentBatchSize)} clés supplémentaires disponibles).
-            </p>
-
-            <div className="flex flex-wrap items-center gap-2 pt-1">
-              <span className="text-stone-400 font-medium">Préréglages :</span>
-              {[15, 20, 30, 45, config.photos.length].map((size) => (
-                <button
-                  key={size}
-                  type="button"
-                  onClick={() => {
-                    setEditingBatchSize(size);
-                    handleSaveBatchSize(size);
-                  }}
-                  disabled={isSavingConfig}
-                  className={`px-2.5 py-1 rounded-lg border text-xs font-mono transition-colors cursor-pointer ${
-                    currentBatchSize === size
-                      ? 'bg-amber-500/20 border-amber-500/60 text-amber-300 font-bold'
-                      : 'bg-stone-950 border-stone-800 text-stone-400 hover:text-stone-200 hover:border-stone-700'
-                  }`}
-                >
-                  {size === config.photos.length ? `Toutes (${size})` : `${size} clés`}
-                </button>
-              ))}
-            </div>
-
-            <div className="flex flex-wrap items-center gap-3 pt-2">
-              <label htmlFor="batchSizeInput" className="text-stone-400 font-medium shrink-0">
-                Taille personnalisée :
-              </label>
-              <input
-                id="batchSizeInput"
-                type="number"
-                min={1}
-                max={config.photos.length}
-                value={editingBatchSize}
-                onChange={(e) => setEditingBatchSize(Math.max(1, parseInt(e.target.value) || 1))}
-                className="w-20 px-2.5 py-1 rounded-lg bg-stone-950 border border-stone-800 text-stone-100 font-mono text-xs focus:border-amber-500 focus:outline-none"
-              />
-              <button
-                type="button"
-                onClick={() => handleSaveBatchSize(editingBatchSize)}
-                disabled={isSavingConfig || editingBatchSize === currentBatchSize}
-                className="px-3 py-1 rounded-lg bg-amber-500 hover:bg-amber-400 disabled:opacity-50 disabled:cursor-not-allowed text-stone-950 font-bold text-xs transition-colors cursor-pointer"
-              >
-                {isSavingConfig ? 'Enregistrement...' : 'Appliquer'}
-              </button>
-              {configSaveSuccess && (
-                <span className="text-emerald-400 flex items-center gap-1 font-mono text-[11px] animate-in fade-in">
-                  <CheckCircle2 className="w-3.5 h-3.5" /> Enregistré dans survey-config.json
-                </span>
-              )}
-            </div>
-          </div>
-        )}
-      </div>
-
-      {/* 8. Bureau Clé d'Ex Actions & Export */}
-      <div className="p-4 rounded-2xl bg-stone-950 border border-stone-800 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs">
+      {/* 7. Bureau Clé d'Ex Actions & Export */}
+      <div className="p-4 rounded-2xl bg-stone-950/60 backdrop-blur-md border border-stone-800/80 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs">
         <div className="text-stone-400 font-mono text-[11px]">
           Fichier local : data/responses/{user.buque.toLowerCase()}_famss{user.famss}.json
           {lastSavedTime && ` • Sauvegarde à ${new Date(lastSavedTime).toLocaleTimeString('fr-FR')}`}

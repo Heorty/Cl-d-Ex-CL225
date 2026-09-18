@@ -74,12 +74,12 @@ export const Header: React.FC<HeaderProps> = ({
   const currentStepInfo = steps.find((s) => s.id === activeStep) || steps[0];
 
   return (
-    <header className="sticky top-0 z-30 bg-stone-950/95 backdrop-blur-md border-b border-stone-800/80 px-2.5 sm:px-6 py-2 transition-all">
+    <header className="sticky top-0 z-30 bg-stone-950/75 backdrop-blur-md border-b border-stone-800/80 px-2.5 sm:px-6 py-2 transition-all">
       <div className="max-w-5xl mx-auto flex items-center justify-between gap-1.5 sm:gap-2">
         {/* Brand */}
         <div className="flex items-center gap-1.5 sm:gap-2 shrink-0">
-          <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-gradient-to-br from-amber-600 to-amber-800 flex items-center justify-center shadow-md shadow-amber-900/30 border border-amber-500/40 text-stone-950 font-bold shrink-0">
-            <Wrench className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-amber-200" />
+          <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-gradient-to-br from-amber-500/20 to-amber-950/80 flex items-center justify-center shadow-md shadow-amber-950/40 border border-amber-500/40 text-stone-950 font-bold shrink-0 p-1">
+            <img src="/AM_TRADS_Arrondi.svg" alt="AM" className="w-full h-full object-contain drop-shadow" />
           </div>
           <div>
             <div className="flex items-center gap-1 leading-none">
@@ -99,7 +99,7 @@ export const Header: React.FC<HeaderProps> = ({
             <button
               type="button"
               onClick={() => setIsMenuOpen((prev) => !prev)}
-              className="flex items-center gap-1 sm:gap-1.5 px-2 sm:px-3 py-1.5 rounded-lg bg-stone-900 hover:bg-stone-800/90 border border-stone-800 text-stone-200 text-xs font-medium transition-all shadow-sm cursor-pointer shrink-0"
+              className="flex items-center gap-1 sm:gap-1.5 px-2 sm:px-3 py-1.5 rounded-lg bg-stone-900/75 hover:bg-stone-800/90 border border-stone-800/80 backdrop-blur-sm text-stone-200 text-xs font-medium transition-all shadow-sm cursor-pointer shrink-0"
               title="Changer d'étape"
             >
               <span className="w-4 h-4 rounded-full bg-amber-500/20 text-amber-400 border border-amber-500/30 flex items-center justify-center text-[10px] font-mono font-bold shrink-0">
@@ -119,7 +119,7 @@ export const Header: React.FC<HeaderProps> = ({
 
             {/* Dropdown Menu */}
             {isMenuOpen && (
-              <div className="absolute top-full left-1/2 -translate-x-1/2 sm:left-auto sm:right-0 sm:translate-x-0 mt-1.5 w-56 bg-stone-900 border border-stone-800 rounded-xl shadow-2xl p-1.5 z-40 animate-in fade-in zoom-in-95 duration-150">
+              <div className="absolute top-full left-1/2 -translate-x-1/2 sm:left-auto sm:right-0 sm:translate-x-0 mt-1.5 w-56 bg-stone-900/85 backdrop-blur-xl border border-stone-800/80 rounded-xl shadow-2xl p-1.5 z-40 animate-in fade-in zoom-in-95 duration-150">
                 <div className="px-2.5 py-1 text-[10px] uppercase font-mono tracking-wider text-stone-500 border-b border-stone-800/80 mb-1">
                   Naviguer vers :
                 </div>
@@ -137,11 +137,11 @@ export const Header: React.FC<HeaderProps> = ({
                       className={`w-full flex items-center justify-between px-2.5 py-2 rounded-lg text-xs transition-colors cursor-pointer ${
                         isActive
                           ? 'bg-amber-600/20 text-amber-300 font-bold border border-amber-500/30'
-                          : 'text-stone-300 hover:bg-stone-800 hover:text-stone-100'
+                          : 'text-stone-300 hover:bg-stone-800/80 hover:text-stone-100'
                       }`}
                     >
                       <div className="flex items-center gap-2">
-                        <span className="w-4 h-4 rounded-full bg-stone-800 border border-stone-700 flex items-center justify-center text-[10px] font-mono">
+                        <span className="w-4 h-4 rounded-full bg-stone-800/80 border border-stone-700 flex items-center justify-center text-[10px] font-mono">
                           {step.num}
                         </span>
                         <Icon className="w-3.5 h-3.5 text-stone-400" />
@@ -161,7 +161,7 @@ export const Header: React.FC<HeaderProps> = ({
         {/* User Info & Logout (Compact) */}
         {user && (
           <div className="flex items-center gap-1 sm:gap-2 shrink-0">
-            <div className="flex items-center gap-1 sm:gap-1.5 bg-stone-900 border border-stone-800 px-1.5 sm:px-2.5 py-1 rounded-lg text-xs">
+            <div className="flex items-center gap-1 sm:gap-1.5 bg-stone-900/75 backdrop-blur-sm border border-stone-800/80 px-1.5 sm:px-2.5 py-1 rounded-lg text-xs">
               <span className="font-semibold text-amber-400 max-w-[70px] sm:max-w-none truncate">
                 {user.buque}
               </span>

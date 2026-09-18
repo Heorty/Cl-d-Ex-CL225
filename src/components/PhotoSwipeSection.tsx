@@ -636,9 +636,9 @@ export const PhotoSwipeSection: React.FC<PhotoSwipeSectionProps> = ({
             {nextUnvotedPhoto && (
               <div
                 key={nextUnvotedPhoto.id}
-                className="absolute inset-0 bg-stone-900/90 border border-stone-800/80 rounded-2xl overflow-hidden shadow-md pointer-events-none transform scale-[0.96] translate-y-2.5 opacity-60 flex flex-col -z-10"
+                className="absolute inset-0 bg-stone-900/60 backdrop-blur-sm border border-stone-800/80 rounded-2xl overflow-hidden shadow-md pointer-events-none transform scale-[0.96] translate-y-2.5 opacity-60 flex flex-col -z-10"
               >
-                <div className="relative flex-1 w-full bg-stone-950/80 overflow-hidden flex items-center justify-center p-2">
+                <div className="relative flex-1 w-full bg-stone-950/40 overflow-hidden flex items-center justify-center p-2">
                   <img
                     src={nextUnvotedPhoto.imageUrl}
                     alt={nextUnvotedPhoto.title}
@@ -663,7 +663,7 @@ export const PhotoSwipeSection: React.FC<PhotoSwipeSectionProps> = ({
                     } -z-10`}
                   />
                 </div>
-                <div className="py-3 px-4 bg-stone-900 border-t border-stone-800/80 text-center shrink-0">
+                <div className="py-3 px-4 bg-stone-900/70 border-t border-stone-800/80 text-center shrink-0 backdrop-blur-sm">
                   <h3 className="text-base sm:text-lg font-bold text-stone-300 font-serif tracking-wide truncate">
                     {nextUnvotedPhoto.title}
                   </h3>
@@ -784,7 +784,7 @@ export const PhotoSwipeSection: React.FC<PhotoSwipeSectionProps> = ({
         </div>
       ) : (
         /* Summary Grid when all cards in current deck are finished */
-        <div className="bg-stone-900 border border-stone-800 rounded-2xl p-4 sm:p-6 shadow-xl flex-1 flex flex-col justify-between">
+        <div className="bg-stone-900/50 backdrop-blur-md border border-stone-800/80 rounded-2xl p-4 sm:p-6 shadow-xl flex-1 flex flex-col justify-between">
           <div>
             <div className="text-center max-w-md mx-auto mb-4">
               <div className="w-10 h-10 rounded-full bg-emerald-500/20 border border-emerald-500/40 text-emerald-400 flex items-center justify-center mx-auto mb-2">
@@ -812,9 +812,9 @@ export const PhotoSwipeSection: React.FC<PhotoSwipeSectionProps> = ({
                   return (
                     <div
                       key={photo.id}
-                      className="bg-stone-950 border border-stone-800 rounded-xl overflow-hidden flex flex-col justify-between"
+                      className="bg-stone-950/50 backdrop-blur-sm border border-stone-800/80 rounded-xl overflow-hidden flex flex-col justify-between"
                     >
-                      <div className="relative h-24 w-full bg-stone-900/80 p-1 flex items-center justify-center">
+                      <div className="relative h-24 w-full bg-stone-900/60 p-1 flex items-center justify-center">
                         <div
                           className={`absolute inset-0 bg-gradient-to-br ${
                             photo.fallbackGradient || 'from-amber-900/30 to-stone-900/40'
@@ -949,8 +949,8 @@ export const PhotoSwipeSection: React.FC<PhotoSwipeSectionProps> = ({
 
       {/* Milestone Modal after reaching targetBatchSize */}
       {showMilestoneModal && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-stone-950/85 backdrop-blur-sm animate-in fade-in">
-          <div className="w-full max-w-md bg-stone-900 border border-amber-500/40 rounded-2xl p-6 shadow-2xl relative text-center">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-stone-950/70 backdrop-blur-md animate-in fade-in">
+          <div className="w-full max-w-md bg-stone-900/70 backdrop-blur-xl border border-amber-500/40 rounded-2xl p-6 shadow-2xl relative text-center">
             <div className="w-12 h-12 rounded-2xl bg-amber-500/15 border border-amber-500/40 text-amber-400 flex items-center justify-center mx-auto mb-3 shadow-inner">
               <Sparkles className="w-6 h-6" />
             </div>
@@ -1014,8 +1014,8 @@ export const PhotoSwipeSection: React.FC<PhotoSwipeSectionProps> = ({
 
       {/* Onboarding First-Swipe Modal */}
       {showTutorial && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-stone-950/85 backdrop-blur-sm animate-in fade-in">
-          <div className="w-full max-w-sm bg-stone-900 border border-stone-800 rounded-2xl p-5 shadow-2xl relative">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-stone-950/70 backdrop-blur-md animate-in fade-in">
+          <div className="w-full max-w-sm bg-stone-900/70 backdrop-blur-xl border border-stone-800/80 rounded-2xl p-5 shadow-2xl relative">
             <div className="flex items-center gap-2.5 mb-3 text-amber-400">
               <Sparkles className="w-5 h-5" />
               <h3 className="text-base font-bold text-stone-100 font-serif">
@@ -1086,8 +1086,8 @@ export const PhotoSwipeSection: React.FC<PhotoSwipeSectionProps> = ({
 
       {/* Superlike Confirmation & Optional Note Modal */}
       {superlikeTarget && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-stone-950/85 backdrop-blur-sm animate-in fade-in">
-          <div className="w-full max-w-sm bg-stone-900 border border-amber-500/40 rounded-2xl p-5 shadow-2xl relative">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-stone-950/70 backdrop-blur-md animate-in fade-in">
+          <div className="w-full max-w-sm bg-stone-900/70 backdrop-blur-xl border border-amber-500/40 rounded-2xl p-5 shadow-2xl relative">
             <div className="flex items-center gap-2 mb-2 text-amber-400">
               <Star className="w-5 h-5 fill-amber-400" />
               <h3 className="text-base font-bold text-stone-100 font-serif">
@@ -1298,7 +1298,7 @@ const CompactSwipeCard: React.FC<CompactSwipeCardProps> = ({
     }
   };
 
-  return (
+    return (
     <motion.div
       style={{ x, y, rotate, opacity }}
       drag={!isExiting}
@@ -1307,13 +1307,13 @@ const CompactSwipeCard: React.FC<CompactSwipeCardProps> = ({
       onDragEnd={handleDragEnd}
       initial={{ scale: 0.95, opacity: 0 }}
       animate={{ scale: 1, opacity: 1 }}
-      className="absolute inset-0 bg-stone-900 border border-stone-800 rounded-2xl overflow-hidden shadow-xl cursor-grab active:cursor-grabbing flex flex-col touch-none select-none"
+      className="absolute inset-0 bg-stone-900/55 backdrop-blur-md border border-stone-800/80 rounded-2xl overflow-hidden shadow-xl cursor-grab active:cursor-grabbing flex flex-col touch-none select-none"
     >
       {/* Photo Image Area */}
-      <div className="relative flex-1 w-full bg-stone-950/90 overflow-hidden flex items-center justify-center p-2 sm:p-3">
+      <div className="relative flex-1 w-full bg-stone-950/50 backdrop-blur-sm overflow-hidden flex items-center justify-center p-2 sm:p-3">
         {/* Subtle Loading Shimmer Skeleton while the image loads */}
         {!imageLoaded && !imageFailed && (
-          <div className="absolute inset-0 flex flex-col items-center justify-center bg-stone-950/95 text-stone-600 animate-pulse">
+          <div className="absolute inset-0 flex flex-col items-center justify-center bg-stone-950/80 backdrop-blur-sm text-stone-600 animate-pulse">
             <div className="w-12 h-12 rounded-2xl bg-stone-900/80 border border-stone-800 flex items-center justify-center mb-2">
               <KeyRound className="w-6 h-6 text-amber-500/40 animate-pulse" />
             </div>
@@ -1347,7 +1347,7 @@ const CompactSwipeCard: React.FC<CompactSwipeCardProps> = ({
           />
         ) : (
           /* Automatic replacement state: user never has to swipe a key without seeing it */
-          <div className="absolute inset-0 bg-stone-950/95 flex flex-col items-center justify-center p-6 text-center z-20">
+          <div className="absolute inset-0 bg-stone-950/90 flex flex-col items-center justify-center p-6 text-center z-20">
             <div className="w-12 h-12 rounded-2xl bg-amber-500/10 border border-amber-500/30 flex items-center justify-center mb-3 shadow-inner">
               <RefreshCw className="w-6 h-6 text-amber-400 animate-spin" />
             </div>
@@ -1384,12 +1384,12 @@ const CompactSwipeCard: React.FC<CompactSwipeCardProps> = ({
       </div>
 
       {/* Card Info - Clean title and card counter */}
-      <div className="py-2.5 px-4 bg-stone-900 border-t border-stone-800/90 flex items-center justify-between shrink-0">
+      <div className="py-2.5 px-4 bg-stone-900/70 backdrop-blur-sm border-t border-stone-800/90 flex items-center justify-between shrink-0">
         <h3 className="text-sm sm:text-base font-bold text-stone-100 font-serif tracking-wide truncate">
           {photo.title}
         </h3>
         {cardIndex !== undefined && totalCards !== undefined && (
-          <span className="text-[10px] font-mono font-medium px-2 py-0.5 rounded-full bg-stone-950 border border-stone-800 text-amber-400 shrink-0 ml-2">
+          <span className="text-[10px] font-mono font-medium px-2 py-0.5 rounded-full bg-stone-950/80 border border-stone-800 text-amber-400 shrink-0 ml-2">
             {cardIndex} / {totalCards} {isExtended ? '• Suite' : ''}
           </span>
         )}

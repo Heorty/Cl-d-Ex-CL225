@@ -46,11 +46,14 @@ export const AuthModal: React.FC<AuthModalProps> = ({ onLogin, isLoading = false
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-stone-950/80 backdrop-blur-md">
-      <div className="w-full max-w-md bg-stone-900 border border-stone-800 rounded-2xl shadow-2xl p-6 sm:p-8 relative overflow-hidden">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-stone-950/70 backdrop-blur-md">
+      <div className="w-full max-w-md bg-stone-900/60 backdrop-blur-xl border border-stone-800/80 rounded-2xl shadow-2xl p-6 sm:p-8 relative overflow-hidden">
         {/* Subtle decorative glow */}
         <div className="absolute -top-24 -right-24 w-48 h-48 bg-amber-500/10 rounded-full blur-3xl pointer-events-none" />
         <div className="absolute -bottom-24 -left-24 w-48 h-48 bg-stone-700/15 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-72 h-72 pointer-events-none opacity-[0.05] select-none" aria-hidden="true">
+          <img src="/AM_TRADS_Arrondi.svg" alt="" className="w-full h-full object-contain" />
+        </div>
 
         {/* Emblème & Titre */}
         <div className="text-center mb-6">
@@ -82,7 +85,7 @@ export const AuthModal: React.FC<AuthModalProps> = ({ onLogin, isLoading = false
               placeholder="Ex: Rapido, Geox..."
               value={buque}
               onChange={(e) => setBuque(e.target.value)}
-              className="w-full px-4 py-3 bg-stone-950 border border-stone-800 focus:border-amber-500/70 focus:ring-2 focus:ring-amber-500/20 rounded-xl text-stone-100 placeholder-stone-600 transition-all outline-none text-sm"
+              className="w-full px-4 py-3 bg-stone-950/60 backdrop-blur-sm border border-stone-800/80 focus:border-amber-500/70 focus:ring-2 focus:ring-amber-500/20 rounded-xl text-stone-100 placeholder-stone-600 transition-all outline-none text-sm"
             />
           </div>
 
@@ -97,7 +100,7 @@ export const AuthModal: React.FC<AuthModalProps> = ({ onLogin, isLoading = false
               placeholder="Ex: 25, 112, 7..."
               value={famss}
               onChange={(e) => setFamss(e.target.value)}
-              className="w-full px-4 py-3 bg-stone-950 border border-stone-800 focus:border-amber-500/70 focus:ring-2 focus:ring-amber-500/20 rounded-xl text-stone-100 placeholder-stone-600 transition-all outline-none text-sm font-mono"
+              className="w-full px-4 py-3 bg-stone-950/60 backdrop-blur-sm border border-stone-800/80 focus:border-amber-500/70 focus:ring-2 focus:ring-amber-500/20 rounded-xl text-stone-100 placeholder-stone-600 transition-all outline-none text-sm font-mono"
             />
             <p className="text-[11px] text-stone-500 mt-1">
               Pas besoin de mot de passe. La casse (majuscules / minuscules) n'a pas d'importance.

@@ -185,25 +185,6 @@ export default function App() {
     }
   };
 
-  // Update swipe batch size in config and persist to server
-  const handleUpdateBatchSize = async (newSize: number) => {
-    try {
-      const res = await fetch('/api/config', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ swipeBatchSize: newSize }),
-      });
-      if (res.ok) {
-        const data = await res.json();
-        if (data.config) {
-          setConfig(data.config);
-        }
-      }
-    } catch (err) {
-      console.error('Erreur mise à jour taille lot swipe:', err);
-    }
-  };
-
   // 9. Initial mount: load config, check local storage
   useEffect(() => {
     const init = async () => {
@@ -235,9 +216,12 @@ export default function App() {
 
   if (isInitializing || !config) {
     return (
-      <div className="min-h-screen bg-stone-950 flex flex-col items-center justify-center gap-3 text-stone-400">
-        <Loader2 className="w-8 h-8 animate-spin text-amber-500" />
-        <p className="text-xs font-mono uppercase tracking-widest text-stone-500">
+      <div className="min-h-screen bg-stone-950 flex flex-col items-center justify-center gap-3 text-stone-400 relative overflow-hidden">
+        <div className="absolute inset-0 pointer-events-none flex items-center justify-center opacity-[0.05] select-none" aria-hidden="true">
+          <img src="/AM_TRADS_Arrondi.svg" alt="" className="w-80 max-w-sm object-contain" />
+        </div>
+        <Loader2 className="w-8 h-8 animate-spin text-amber-500 relative z-10" />
+        <p className="text-xs font-mono uppercase tracking-widest text-stone-500 relative z-10">
           Chargement de la Clé d'Ex 225...
         </p>
       </div>
@@ -273,7 +257,21 @@ export default function App() {
   const hasCompletedBoth = surveyProgress === 100 && swipeProgress === 100 && postSwipeProgress === 100;
 
   return (
-    <div className="min-h-screen flex flex-col bg-stone-950 text-stone-100 selection:bg-amber-500 selection:text-stone-950">
+    <div className="min-h-screen flex flex-col bg-stone-950 text-stone-100 selection:bg-amber-500 selection:text-stone-950 relative overflow-x-hidden">
+      {/* Background SVG - AM Traditions Arrondi en grand arrière-plan */}
+      <div
+        className="fixed inset-0 pointer-events-none z-0 flex items-center justify-center overflow-hidden select-none"
+        aria-hidden="true"
+      >
+        <img
+          src="/AM_TRADS_Arrondi.svg"
+          alt=""
+          className="w-[94vw] max-w-5xl max-h-[88vh] object-contain opacity-[0.11] pointer-events-none filter drop-shadow-[0_0_100px_rgba(245,158,11,0.28)]"
+        />
+        {/* Subtle radial vignette gradient to soften periphery */}
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_35%,rgba(12,10,9,0.72)_90%)]" />
+      </div>
+
       {/* Header with Promo Badge & Stepper */}
       <Header
         user={user}
@@ -287,7 +285,7 @@ export default function App() {
       />
 
       {/* Main Content Area */}
-      <main className="flex-1 flex flex-col">
+      <main className="flex-1 flex flex-col relative z-10">
         {!user ? (
           <AuthModal onLogin={handleLogin} isLoading={isLoadingAuth} />
         ) : (
@@ -342,7 +340,6 @@ export default function App() {
                 stats={stats}
                 onEditAnswers={(step) => setActiveStep(step || 'survey')}
                 onRefreshStats={fetchStats}
-                onUpdateBatchSize={handleUpdateBatchSize}
                 lastSavedTime={lastSavedTime}
               />
             )}

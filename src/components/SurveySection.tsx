@@ -181,7 +181,7 @@ export const SurveySection: React.FC<SurveySectionProps> = ({
       </div>
 
       {/* Main Question Card (compacted for single-screen smartphone layout) */}
-      <div className="bg-stone-900 border border-stone-800 rounded-2xl p-3 sm:p-5 shadow-lg flex flex-col justify-between flex-1">
+      <div className="bg-stone-900/50 backdrop-blur-md border border-stone-800/80 rounded-2xl p-3 sm:p-5 shadow-xl flex flex-col justify-between flex-1">
         <div>
           {/* Question Title */}
           <div className="flex items-start justify-between gap-2 mb-1.5">
@@ -228,8 +228,8 @@ export const SurveySection: React.FC<SurveySectionProps> = ({
                     onClick={() => handleSingleSelect(opt.value)}
                     className={`group text-left p-2.5 sm:p-3 rounded-xl border transition-all cursor-pointer flex flex-col justify-between ${
                       isSelected
-                        ? 'bg-amber-500/20 border-amber-500/80 ring-1 ring-amber-500/50'
-                        : 'bg-stone-950/60 border-stone-800 hover:border-stone-700 hover:bg-stone-800/40'
+                        ? 'bg-amber-500/20 border-amber-500/80 ring-1 ring-amber-500/50 backdrop-blur-sm'
+                        : 'bg-stone-950/45 backdrop-blur-sm border-stone-800/80 hover:border-stone-700 hover:bg-stone-800/40'
                     }`}
                   >
                     <div className="flex items-start justify-between gap-2.5">
@@ -265,7 +265,7 @@ export const SurveySection: React.FC<SurveySectionProps> = ({
                           placeholder="Précise ta pensée (facultatif)..."
                           value={(answers[currentQuestion.id + '_autre'] as string) || ''}
                           onChange={(e) => onUpdateAnswer(currentQuestion.id + '_autre', e.target.value)}
-                          className="w-full px-2.5 py-1.5 rounded-lg bg-stone-900 border border-stone-700 text-stone-100 text-xs focus:outline-none focus:border-amber-400 placeholder-stone-500"
+                          className="w-full px-2.5 py-1.5 rounded-lg bg-stone-900/75 backdrop-blur-sm border border-stone-700 text-stone-100 text-xs focus:outline-none focus:border-amber-400 placeholder-stone-500"
                         />
                       </div>
                     )}
@@ -293,8 +293,8 @@ export const SurveySection: React.FC<SurveySectionProps> = ({
                     onClick={() => handleMultiToggle(opt.value)}
                     className={`group text-left p-2.5 sm:p-3 rounded-xl border transition-all cursor-pointer flex flex-col justify-between ${
                       isSelected
-                        ? 'bg-amber-500/20 border-amber-500/80 ring-1 ring-amber-500/50'
-                        : 'bg-stone-950/60 border-stone-800 hover:border-stone-700 hover:bg-stone-800/40'
+                        ? 'bg-amber-500/20 border-amber-500/80 ring-1 ring-amber-500/50 backdrop-blur-sm'
+                        : 'bg-stone-950/45 backdrop-blur-sm border-stone-800/80 hover:border-stone-700 hover:bg-stone-800/40'
                     }`}
                   >
                     <div className="flex items-start justify-between gap-2.5">
@@ -330,7 +330,7 @@ export const SurveySection: React.FC<SurveySectionProps> = ({
                           placeholder="Précise (facultatif)..."
                           value={(answers[currentQuestion.id + '_autre'] as string) || ''}
                           onChange={(e) => onUpdateAnswer(currentQuestion.id + '_autre', e.target.value)}
-                          className="w-full px-2.5 py-1.5 rounded-lg bg-stone-900 border border-stone-700 text-stone-100 text-xs focus:outline-none focus:border-amber-400 placeholder-stone-500"
+                          className="w-full px-2.5 py-1.5 rounded-lg bg-stone-900/75 backdrop-blur-sm border border-stone-700 text-stone-100 text-xs focus:outline-none focus:border-amber-400 placeholder-stone-500"
                         />
                       </div>
                     )}
@@ -348,7 +348,7 @@ export const SurveySection: React.FC<SurveySectionProps> = ({
                 placeholder={currentQuestion.placeholder || 'Écris tes réflexions, idées, symboles...'}
                 value={(answers[currentQuestion.id] as string) || ''}
                 onChange={(e) => handleTextChange(e.target.value)}
-                className="w-full p-2.5 sm:p-3 bg-stone-950 border border-stone-800 focus:border-amber-500/70 focus:ring-1 focus:ring-amber-500/50 rounded-xl text-stone-100 placeholder-stone-500 transition-all outline-none text-xs sm:text-sm resize-none leading-relaxed min-h-[85px] sm:min-h-[110px]"
+                className="w-full p-2.5 sm:p-3 bg-stone-950/50 backdrop-blur-sm border border-stone-800/80 focus:border-amber-500/70 focus:ring-1 focus:ring-amber-500/50 rounded-xl text-stone-100 placeholder-stone-500 transition-all outline-none text-xs sm:text-sm resize-none leading-relaxed min-h-[85px] sm:min-h-[110px]"
               />
               <div className="flex justify-between items-center text-[10px] text-stone-500 mt-1 font-mono">
                 <span>Réponse libre</span>
